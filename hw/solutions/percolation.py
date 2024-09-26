@@ -71,6 +71,11 @@ class PercolationSimulation:
         # from self.grid.
         self.grid_filled = np.copy(self.grid)
 
+        print(
+            "Running with Instructor Solutions. If you meant to run your own code, do not import from solutions", 
+            flush=True
+        )
+
     def _initialize_grid(self):
         """
         Sample a random lattice for the percolation simulation. This method should

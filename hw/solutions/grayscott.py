@@ -45,6 +45,10 @@ class GrayScott:
 
         ksq = kxx**2 + kyy**2
         self.ksq = ksq
+        print(
+            "Running with Instructor Solutions. If you meant to run your own code, do not import from solutions", 
+            flush=True
+        )
 
         
     def _reaction(self, y):

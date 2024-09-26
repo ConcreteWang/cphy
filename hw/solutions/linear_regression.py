@@ -47,6 +47,10 @@ class LinearRegressor(BaseRegressor):
         self.method = method
         self.regularization = regularization
         self.regstrength = regstrength
+        print(
+            "Running with Instructor Solutions. If you meant to run your own code, do not import from solutions", 
+            flush=True
+        )
 
     # functions that begin with underscores are private, by convention.
     # Technically we could access them from outside the class, but we should
@@ -148,16 +152,19 @@ def featurize_flowfield(field):
     field_fft_phase = np.angle(field_fft)[..., None]
 
     ## Compute the spatial gradients along x and y
-    field_grad = np.gradient(field, axis=(-2, -1))
-    field_grad = np.stack(field_grad, axis=-1)
+    field_gradx = np.vstack([np.diff(field, axis=0), field[-1, None]])[..., None]
+    field_grady = np.hstack([np.diff(field, axis=1), field[:, None, -1]])[..., None]
+    # print(field_fft_abs.shape, field_gradx.shape, flush=True)
+    # field_grad = np.gradient(field, axis=(-2, -1))
+    # field_grad = np.stack(field_grad, axis=-1)
 
     ## Compute the spatial Laplacian
-    field_lap = np.stack(np.gradient(field_grad, axis=(-2, -1)), axis=-1)
-    field_lap = np.sum(field_lap, axis=-1)
+    # field_lap = np.stack(np.gradient(field_grad, axis=(-2, -1)), axis=-1)
+    # field_lap = np.sum(field_lap, axis=-1)
 
     field = field[..., None]
     field_features = np.concatenate(
-        [field, field_grad, field_lap, field_fft_phase, field_fft_abs], 
+        [field_fft_phase, field_fft_abs, field_gradx, field_grady], 
         axis=-1
     )
     return field_features

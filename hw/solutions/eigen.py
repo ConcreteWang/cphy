@@ -54,6 +54,10 @@ class SpectralDecompositionPowerMethod:
         if self.store_intermediate_results:
             self.stored_eigenvalues = list()
             self.stored_eigenvectors = list()
+        print(
+            "Running with Instructor Solutions. If you meant to run your own code, do not import from solutions", 
+            flush=True
+        )
     
     def fit(self, A):
         """

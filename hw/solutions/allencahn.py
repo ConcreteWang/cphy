@@ -26,6 +26,10 @@ class AllenCahn:
         self.dy = Ly / ny
         self.d = d
         self.kappa = kappa
+        print(
+            "Running with Instructor Solutions. If you meant to run your own code, do not import from solutions", 
+            flush=True
+        )
        
     def _laplace(self, grid):
         """

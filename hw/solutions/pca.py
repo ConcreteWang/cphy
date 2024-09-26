@@ -20,6 +20,10 @@ class PrincipalComponents(BaseEstimator, TransformerMixin):
         self.random_state = random_state
         self.components_ = None
         self.singular_values_ = None
+        print(
+            "Running with Instructor Solutions. If you meant to run your own code, do not import from solutions", 
+            flush=True
+        )
 
     def fit(self, X):
         """

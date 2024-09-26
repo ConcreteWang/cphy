@@ -39,6 +39,10 @@ class GrayScott:
         # expense of memory.
         self.d = np.hstack([self.du * np.ones(nx * ny), self.dv * np.ones(nx * ny)])
         self.ksq_stack = np.hstack([self.ksq, self.ksq])
+        print(
+            "Running with Instructor Solutions. If you meant to run your own code, do not import from solutions", 
+            flush=True
+        )
         
     def _reaction(self, y):
         """
